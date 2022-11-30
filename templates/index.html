@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Card</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='animation.css')}}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"
+        integrity="sha512-8E3KZoPoZCD+1dgfqhPbejQBnQfBXe8FuwL4z/c8sTrgeDMFEnoyTlH3obB4/fV+6Sg0a0XF+L/6xS4Xx1fUEg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.6/lottie.min.js"
+        integrity="sha512-yAr4fN9WZH6hESbOwoFZGtSgOP+LSZbs/JeoDr02pOX4yUFfI++qC9YwIQXIGffhnzliykJtdWTV/v3PxSz8aw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"
+        integrity="sha512-gmwBmiTVER57N3jYS3LinA9eb8aHrJua5iQD7yqYCKa5x6Jjc7VDVaEA0je0Lu0bP9j7tEjV3+1qUm6loO99Kw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.3/ScrollMagic.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/animation.gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/plugins/debug.addIndicators.js"
+        integrity="sha512-mq6TSOBEH8eoYFBvyDQOQf63xgTeAk7ps+MHGLWZ6Byz0BqQzrP+3GIgYL+KvLaWgpL8XgDVbIRYQeLa3Vqu6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenLite.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TimelineMax.min.js"></script>
+    <script defer src="{{ url_for('static', filename='script.js')}}"></script>
+</head>
+
+<!-- TODO add a form -->
+
+<body>
+    <div id="container">
+        <section id="main">
+            <iframe src='https://my.spline.design/untitled-25930b731392e3b31da5b2a41ecc6cfe/' frameborder='0'
+                width='100%' height='100%'></iframe>
+            <span>
+                <h1>Belmont Credit</h1>
+                <p>the card that gets you places</p>
+            </span>
+            <button class="header__btn">Apply</button>
+            <div class="stickyElem">
+                <div class="scroll__animation"></div>
+            </div>
+        </section>
+        <section class="panel benefits__CashBack">
+            <h2>Earn on everything you buy</h2>
+            <p>
+                With the Belmont credit card,
+                you can earn cash back on every purchase <br> and maximize your
+                cash back by choosing how you earn rewards.
+            </p>
+            <div class="sub">
+                <div>
+                    <h3>15%</h3>
+                    <b>cash back on flight services</b>
+                    <div class="airplane anim"></div>
+                </div>
+                <div>
+                    <h3>10%</h3>
+                    <b>cash back on abroad expenses</b>
+                    <div class="cabana anim"></div>
+                </div>
+                <div>
+                    <h3>5%</h3>
+                    <b>cash back on everything else</b>
+                    <img class="anim plateImage" src="{{url_for('static', filename='/assets/plate-02.svg')}}" alt="">
+                </div>
+            </div>
+        </section>
+        <section class="panel benefits__Mobile">
+            <h2>Mobile Banking App</h2>
+            <ol>
+                <li>
+                    <!-- TODO add and expenses when the image down changes -->
+                    <p>Understand your income</p>
+                    <div class="ol__animations">
+                        <img class="static_img compensation"
+                            src="{{url_for('static', filename='/assets/compensation-02.svg')}}" />
+                    </div>
+                </li>
+                <li>
+                    <p>keep tabs on your
+                        credit health</p>
+                    <div class="ol__animations">
+                        <div class="financeChart anim"></div>
+                    </div>
+                </li>
+                <li>
+                    <p>excellent customer service</p>
+                    <div class="ol__animations">
+                        <div class="customerServ anim"></div>
+                    </div>
+                </li>
+            </ol>
+
+        </section>
+        <section class="panel ending_benefits">
+            <!-- <p>Enjoy 0% Intro APR for 36 months</p>
+            <p>$0 annual fee</p>
+            <p>bonus of 60,000 points after you spend $4,000</p> -->
+            <img class="static_img img" src="{{url_for('static', filename='/assets/screen-03.png')}}" />
+            <button class="footer__btn">Apply Now!</button>
+        </section>
+    </div>
+    <script>
+        //load lottie files
+        const airplaneELem = document.querySelector('.airplane')
+        lottie.loadAnimation({
+            container: airplaneELem, // the dom element that will contain the animation
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: "{{url_for('static', filename='assets/animations/airplane.json')}}"
+        });
+        const cabanaElem = document.querySelector('.cabana')
+        lottie.loadAnimation({
+            container: cabanaElem, // the dom element that will contain the animation
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: "{{url_for('static', filename='assets/animations/cabana.json')}}"
+        });
+        const scrollAnimationElem = document.querySelector('.scroll__animation');
+
+        lottie.loadAnimation({
+            container: scrollAnimationElem, // the dom element that will contain the animation
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: "{{url_for('static', filename='assets/animations/mouse_scroll.json')}}"
+        });
+        const financeChart = document.querySelector('.financeChart')
+        lottie.loadAnimation({
+            container: financeChart, // the dom element that will contain the animation
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: "{{url_for('static', filename='assets/animations/chart_data.json')}}"
+        });
+        const customerServ = document.querySelector('.customerServ')
+        lottie.loadAnimation({
+            container: customerServ, // the dom element that will contain the animation
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: "{{url_for('static', filename='assets/animations/customer_serv.json')}}"
+        });
+    </script>
+</body>
