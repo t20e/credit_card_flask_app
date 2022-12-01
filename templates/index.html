@@ -28,18 +28,17 @@
     <script defer src="{{ url_for('static', filename='script.js')}}"></script>
 </head>
 
-<!-- TODO add a form -->
 
 <body>
     <div id="container">
         <section id="main">
-            <iframe src='https://my.spline.design/untitled-25930b731392e3b31da5b2a41ecc6cfe/' frameborder='0'
+            <iframe class="items" src='https://my.spline.design/untitled-25930b731392e3b31da5b2a41ecc6cfe/' frameborder='0'
                 width='100%' height='100%'></iframe>
             <span>
-                <h1>Belmont Credit</h1>
-                <p>the card that gets you places</p>
+                <h1 class="items">Belmont Credit</h1>
+                <p class="items">the card that gets you places</p>
             </span>
-            <button class="header__btn">Apply</button>
+            <button onclick="openForm()" class="header__btn">Apply</button>
             <div class="stickyElem">
                 <div class="scroll__animation"></div>
             </div>
@@ -73,7 +72,6 @@
             <h2>Mobile Banking App</h2>
             <ol>
                 <li>
-                    <!-- TODO add and expenses when the image down changes -->
                     <p>Understand your income</p>
                     <div class="ol__animations">
                         <img class="static_img compensation"
@@ -101,8 +99,25 @@
             <p>$0 annual fee</p>
             <p>bonus of 60,000 points after you spend $4,000</p> -->
             <img class="static_img img" src="{{url_for('static', filename='/assets/screen-03.png')}}" />
-            <button class="footer__btn">Apply Now!</button>
+            <button onclick="openForm()" class="footer__btn">Apply Now!</button>
         </section>
+        <div id="popUp">
+            <form action="/form" method="post">
+                <h3 style="color: black !important;">Apply</h3>
+                <label for="firstName">First name:</label>
+                <input type="text" name="firstName">
+                <label for="lastName">Last name:</label>
+                <input type="text" name="lastName">
+                <label for="email">Email:</label>
+                <input type="text" name="email">
+                <label for="DOB">DOB:</label>
+                <input type="date" name="DOB">
+                <div>
+                    <input type="submit" value="apply" class="footer__btn">
+                    <input type="button" id="popUp--close" value="close" onclick="closeForm()" class="footer__btn">
+                </div>
+            </form>
+        </div>
     </div>
     <script>
         //load lottie files
@@ -149,3 +164,5 @@
         });
     </script>
 </body>
+
+</html>
